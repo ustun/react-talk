@@ -1,114 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
-    <title>Basic Example with JSX</title>
     <link rel="stylesheet" href="../shared/css/base.css" />
     <link rel="stylesheet" href="../shared/css/pure.css" />
-
+    <link rel="stylesheet" href="pure-additions.css" />
+    <link rel="stylesheet" href="custom.css" />
   </head>
   <body>
-    <!-- <h1>Basic Example with JSX</h1> -->
-    <div id="container"></div>
-
-    <div id="hello-world-container"></div>
-    <div id="hello-world-2-container"></div>
-
     <div id="counter-container"></div>
+    <div id="counter-container-2"></div>
+    <div id="todo-container"></div>
+    <div id="my-items-container"></div>
 
-      <script src="../../build/react.js"></script>
-      <script src="../../build/JSXTransformer.js"></script>
-      <script type="text/jsx">
-      /**
-       * @jsx React.DOM
-       */
+    <script src="../../build/react.js"></script>
+    <script src="build/hello_world.js"></script>
+    <script src="build/counter.js"></script>
+    <script src="build/todo.js"></script>
 
-      var HelloWorld = React.createClass({
-          render: function () {
-            return <div className="outline">Hello {this.props.name}</div>;
-
-          }
-
-        });
-      </script>
-
-      <script type="text/jsx">
-      /**
-       * @jsx React.DOM
-       */
-
-      var CounterComponent = React.createClass({
-
-          getInitialState: function () {
-            return {nCounter: 0};
-          },
-
-        getDefaultProps: function () {
-        return {nMaxClicks: 20};
-},
-
-        decrement: function () {
-        this.setState({nCounter: this.state.nCounter - 1});
-},
-
-        onClick: function () {
-        if (this.state.nCounter < 20) {
-        this.setState({nCounter: this.state.nCounter + 1});
-        }
-
-},
-          render: function () {
-            return <div className="outline">
-
-            You have clicked me {this.state.nCounter} times
-        <button className="pure-button pure-button-primary" onClick={this.onClick} disabled={this.state.nCounter == this.props.nMaxClicks}>Increment</button>
-        <br/>
-        Click me {this.props.nMaxClicks - this.state.nCounter} more
-        <button className="pure-button" onClick={this.decrement} disabled={this.state.nCounter == 0}>Decrement</button>
-
-        {this.state.nCounter == this.props.nMaxClicks ? <div>You have clicked me enough</div> : (this.state.nCounter > 0 ? <div>Still need to click</div> : <div>You haven't clicked yet at all.</div>)}
-            </div>;
-
-          }
-
-        });
-      </script>
-
-      <script type="text/jsx">
-      /**
-       * @jsx React.DOM
-       */
-      var ExampleApplication = React.createClass({
-          render: function() {
-            var elapsed = Math.round(this.props.elapsed  / 100);
-            var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
-            var message =
-            'React has been successfully running for ' + seconds + ' seconds.';
-
-            return <p>{message}</p>;
-          }
-        });
-      </script>
-
-      <script type="text/jsx">
-      /**
-       * @jsx React.DOM
-       */
-
-      var start = new Date().getTime();
-      false && setInterval(function() {
-          React.renderComponent(
-            <ExampleApplication elapsed={new Date().getTime() - start} />,
-            document.getElementById('container')
-          );
-        }, 50);
-
-            React.renderComponent(HelloWorld({name: "Istanbul Coders"}), document.getElementById('hello-world-container'))
-
-                        React.renderComponent(<HelloWorld name="Istanbul Hackers"/>, document.getElementById('hello-world-2-container'))
-
-            React.renderComponent(<CounterComponent nMaxClicks={5}/>, document.getElementById('counter-container'))
-
-      </script>
   </body>
 </html>
